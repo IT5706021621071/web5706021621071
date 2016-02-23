@@ -1,69 +1,94 @@
-html>
-<head>
-<meta charset="utf-8">
-<title>Random Number</title>
-</head>
-<body>
-  <table width="800" align="center" border="1">
-<?php
-//แก้ไขครั้งที่1 ผลลัพธ์ยังไม่ได้ต้องเปลี่ยนหลักการใหม่
-  $check = 1;
-  $array = ["1","2","3","4","5","6","7","8","9","10"
-            ,"11","12","13","14","15","16","17","18","19","20"
-            ,"21","22","23","24","25","26","27","28","29","30"
-            ,"31","32","33","34","35","36","37","38","39","40"
-            ,"41","42","43","44","45","46","47","48","49","50"
-            ,"51","52"];
-  do{
-    $random = rand(1,52);
-    $temp;
-    $r = 0;
-    $c = 0;
-    for($i=0;$i<52;$i++)
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random Array</title>
+  </head>
+  <body>
+    <table width="800" align="center" border="1">
+  <?php
+  $x=1;
+  for ($r=0; $r<13 ; $r++)
+  {
+    for ($c=0; $c<4 ; $c++)
     {
-      if($random == $array[$i])
-      {
-        $temp = $random;
-        $array[$i] = 0;
-        break;
-      }
-      elseif($random != $array[$i])
-      {
-      }
+      $num[$r][$c] = $x;
+      $x++;
     }
+  }
 
-    if($r!=13 && $c!=4)
+  for ($r=0; $r <13 ; $r++)
+  {
+    for ($c=0; $c <4 ; $c++)
     {
-      if($c < 4)
+      $ran1=rand(0,12);
+      $ran2=rand(0,3);
+      $swap=$num[$r][$c];
+      $num[$r][$c] = $num[$ran1][$ran2];
+      $num[$ran1][$ran2] = $swap;
+    }
+  }
+
+  for ($r=0; $r<13 ; $r++)
+  {
+    echo "<tr>";
+    for ($c=0; $c<4 ; $c++)
+    {
+      echo  "<td><center>".$num[$r][$c]."</center></td>";
+    }
+    echo "</tr>";
+  }
+  /*$x=0;
+    while($x<13){
+      $i=1;
+      for ($r=0; $r<13 ; $r++)
       {
-        if($r < 13)
+        for ($c=0; $c<4 ; $c++)
         {
-          $sum[$r][$c] = $temp;
-          $c++;
-          if($c == 4)
-          {
-            $c = 0;
-            $r++;
-          }
+          $num[$r][$c] = $i;
+          $i++;
         }
       }
-      $check = 1;
-    }
-    ////////////////////////////////////////////////////////
-    elseif($r==13 && $c==4)
-    {
-      for($i=0; $i<13; $i++)
+      $temp;
+      $r = 0;
+      $c = 0;
+      ////////////////////////////////////////////////////////
+      $ran1=rand(0,12);
+      $ran2=rand(0,3);
+      ///////////////////////////////////////////////////////
+      $swap=$num[$r][$c];
+      $num[$r][$c] = $num[$ran1][$ran2];
+      $num[$ran1][$ran2] = $swap;
+
+      echo $num[$r][$c]."<br/>";
+
+      if($r<13)
       {
-        for($j=0; $j<4; $j++)
+        if($c==4)
         {
-          echo "<td><center>$sum[$i][$j]</center></td>";
+          $c = 0;
+          $r = $r+1;
+        }
+        else
+        {
+          $c = $c+1;
+        }
+        $x++;
+      }
+      else
+      {
+        for($r=0; $r <13 ; $r++)
+        {
+          echo "<tr>";
+          for ($c=0; $c <4 ; $c++)
+            {
+              echo "<td>".$num[$r][$c]."</td>";
+            }
+          echo "</tr>";
         }
       }
-      $check = 0;
-    }
-    //////////////////////////////////////////////////////
-  }while($check == 1);
- ?>
-</table>
-</body>
+    }*/
+    /////////////////////////////////////////////////////////
+   ?>
+  </table>
+  </body>
 </html>
